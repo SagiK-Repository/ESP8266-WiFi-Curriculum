@@ -17,3 +17,10 @@
 
 ### ◆ 소제목
 - 내용
+
+
+# 참조
+- ESP8266 Weather Station 영상
+  - https://mcuoneclipse.com/2017/09/09/wifi-oled-mini-weather-station-with-esp8266/
+  - https://www.youtube.com/watch?v=McwarmDpQXo
+  - https://www.youtube.com/watch?v=7uV1J4KVtQs
