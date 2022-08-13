@@ -14,7 +14,7 @@
 
  <br>
 
-## 1. UART 통신
+## **1. UART 통신**
 
 ### ◆ UART
 
@@ -37,7 +37,7 @@
 
 <br>
 
-## 2. ESP8266 직접 통신
+## **2. ESP8266 직접 통신**
 
 ### ◆ ESP8266 직접통신
 
@@ -138,7 +138,7 @@ TCP/UDP 통신시작 | AT+CIPSTART=\<type\>,\<remote IP\>, \<remote port\> | id 
 <br>
 
 
-## 3. AVR
+## **3. AVR**
 
 ![image](https://user-images.githubusercontent.com/66783849/184473047-ce7d183f-4631-4610-bf3d-78c454bd44d6.png) AVR Atmega8
 
@@ -165,7 +165,7 @@ TCP/UDP 통신시작 | AT+CIPSTART=\<type\>,\<remote IP\>, \<remote port\> | id 
 <br>
 
 
-## 4. AVR 활용한 Wi-Fi
+## **4. AVR 활용한 Wi-Fi**
 
 ### ◆ 준비물
 - AVR Atmega128A
