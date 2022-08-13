@@ -17,7 +17,7 @@
 
 ```mermaid
 flowchart LR
-    EL["ESP8266 Library"] --> AI["Arduino IDE"] --"HTTP Programming"--> E["ESP8266"] --"HTTP : Location Infomation"--> OWM[("OpenWeatherMap.org")]
+    EL["ESP8266 Library"] -.-> AI["Arduino IDE"] -."HTTP Programming".-> E["ESP8266"] --"HTTP : Location Infomation"--> OWM[("OpenWeatherMap.org")]
     OWM --"HTTP : Weather JSon Infomation"--> E --"Json Parse"--> R["Serial Output"] --> Own["Result"]
 ```
 
@@ -48,11 +48,11 @@ flowchart LR
 <br>
 
 # 참조
-- ESP8266 Weather Station 영상
-  - https://mcuoneclipse.com/2017/09/09/wifi-oled-mini-weather-station-with-esp8266/
-  - https://www.youtube.com/watch?v=McwarmDpQXo
-  - https://www.youtube.com/watch?v=7uV1J4KVtQs
 - ESP8266 라이브러리 설치(설정)
   - https://randomnerdtutorials.com/how-to-install-esp8266-board-arduino-ide/
 - ESP8266 HTTP, WeatherStation Guide
   - https://randomnerdtutorials.com/esp8266-nodemcu-http-get-open-weather-map-thingspeak-arduino/
+- ESP8266 Weather Station 영상
+  - https://mcuoneclipse.com/2017/09/09/wifi-oled-mini-weather-station-with-esp8266/
+  - https://www.youtube.com/watch?v=McwarmDpQXo
+  - https://www.youtube.com/watch?v=7uV1J4KVtQs
