@@ -2,8 +2,14 @@
 
 # 목차
 0. 구현 과정
-1. ESP8266 환경 설정
-2. ESP8266 Weather Station
+1. Arduino IDE
+2. Arduino IDE - ESP8266 Library
+3. ESP8266 장비
+4. 기본 실습 ESP8266 기본 프로그래밍
+5. HTTP
+6. ESP8266 HTTP
+7. Json
+9. ESP8266 - Get Weather Station
 
 <br>
 
@@ -11,7 +17,8 @@
 
 ```mermaid
 flowchart LR
-    EL["ESP8266 Library"] --> AI["Arduino IDE"] --> E["ESP8266"]
+    EL["ESP8266 Library"] --> AI["Arduino IDE"] --"HTTP Programming"--> E["ESP8266"] --"HTTP : Location Infomation"--> OWM[("OpenWeatherMap.org")]
+    OWM --"HTTP : Weather JSon Infomation"--> E --"Json Parse"--> R["Serial Output"] --> Own["Result"]
 ```
 
 
