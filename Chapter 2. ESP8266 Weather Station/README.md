@@ -91,7 +91,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 - ESP8266 활용을 위한 준비물을 준비한다.
   - ESP8266 TWM-02 (여기서는 이 보드를 활용하여 실습했다. ESP8266관련 보드면 충분히 문제 없다.)
   - UART to USB Board
-  - [LD1117AV33](https://www.mouser.kr/ProductDetail/STMicroelectronics/LD1117AV33?qs=hUhhBvpTJN9Rfx8G8TXH1A%3D%3D) (2.75~8V Input, 3.3V 1A Output)
+  - [LD1117AV33](https://www.mouser.kr/ProductDetail/STMicroelectronics/LD1117AV33?qs=hUhhBvpTJN9Rfx8G8TXH1A%3D%3D) (2.75~8V Input, 3.3V 1A Output)  
 
 ![image](https://user-images.githubusercontent.com/66783849/184495010-38fb580f-5661-4855-912c-b179a81abb01.png)
 
@@ -108,7 +108,7 @@ GND | GND
 
 # **4. ESP8266 기본 프로그래밍 - 내부 LED 깜빡이기**
 
-1. Tools > Baord > ESP8266 > Generic ESP8266 Module  
+### 1. Tools > Baord > ESP8266 > Generic ESP8266 Module  
   ESP8266 TWM02보드로, 직접 연결하기 때문에 몇가지 속성을 변경해야 한다.
 <img src="https://user-images.githubusercontent.com/66783849/184495598-5d0e8f97-24a7-4431-9683-373b72a087c3.png" width="70%">
 
@@ -117,15 +117,18 @@ GND | GND
 <br>
  
 
-2. ESP8266 Board 속성 설정
-   - Tool 항목에 들어가면 자세한 속성을 설정할 수 있다.
-   - ESP8266 Board의 FLASH 메모리의 용량을 확인한다.
-   - ESP8266 TWM02 뒷면에 FLASH 메모리가 존재하는데, 25q32fvstg이라고 한다.
-   - 25q32fvstg의 FLASH 메모리 용량은 25Q32FVSIG (32M-bit)로, 이를 8로 나누어 4M-byte로 설정한다.
-   - Serial Port를 설정해준다.
-  <img src="https://user-images.githubusercontent.com/66783849/184495744-c1284f5e-31aa-420a-823c-6d1675cc5fb8.png" width="50%">
-  <img src="https://user-images.githubusercontent.com/66783849/184496368-c08f5736-bea6-4f6e-ab25-e7fb5ef6207e.png" width="50%">
-  ![image](https://user-images.githubusercontent.com/66783849/184496582-e693a98e-e50b-4a5e-8969-8a7664e4dbdf.png)
+### 2. ESP8266 Board 속성 설정
+ - Tool 항목에 들어가면 자세한 속성을 설정할 수 있다.
+ - ESP8266 Board의 FLASH 메모리의 용량을 확인한다.
+ - ESP8266 TWM02 뒷면에 FLASH 메모리가 존재하는데, 25q32fvstg이라고 한다.
+ - 25q32fvstg의 FLASH 메모리 용량은 25Q32FVSIG (32M-bit)로, 이를 8로 나누어 4M-byte로 설정한다.
+ - Serial Port를 설정해준다.  
+
+ <img src="https://user-images.githubusercontent.com/66783849/184495744-c1284f5e-31aa-420a-823c-6d1675cc5fb8.png" width="50%">
+ 
+ <img src="https://user-images.githubusercontent.com/66783849/184496368-c08f5736-bea6-4f6e-ab25-e7fb5ef6207e.png" width="50%">
+ 
+ ![image](https://user-images.githubusercontent.com/66783849/184496582-e693a98e-e50b-4a5e-8969-8a7664e4dbdf.png)
 
 (FS : 파일 시스템 영역, OTA : Sketch 프로그램의 영역, OTA는 최대한 적게 설정한다.)  
   
@@ -134,22 +137,66 @@ GND | GND
 <br>
 
 
-3. ESP8266 프로그래밍
+### 3. ESP8266 프로그래밍 모드 설정
+
+- ESP8266에는 프로그래밍 모드와 실행모드 등 여러 모드가 존재한다.  
+- 프로그래밍 모드로 설정을 해야 프로그래밍이 가능하다.  
+- 현재 ESP8266이 어떤 모드에 있는지 확인하기 위해서는 다음과 같은 과정을 거친다.  
+    1. [툴 > 시리얼 모니터] 시리얼 통신을 통한 결과확인을 위해 가상 시리얼 모니터를 연다.
+    2. Board Rate는 74880bps로 설정한다.
+    3. ESP8266의 RST핀에 GND를 연결한다.
+    4. 시리얼 모니터에 결과를 확인한다.  
+       이때, boot mode : (1.7)에서 괄호 내 첫 번째 숫자인 1을 보고 프로그래밍 모드임을 알 수 있다.  
+       3일 경우에는 일반(실행)모드이다.  
+
+<img src="https://user-images.githubusercontent.com/66783849/184497244-4b3bfa2d-7542-4b2e-921b-b0e1ab665905.png" width="70%"> 프로그래밍 모드
+
+- 모드를 바꾸는 방법은 다음과 같다.  
+  Programming Mode : GPIO0 핀이 0(GND)에 연결된 후, RST를 GND에 연결 후 해제
+  Nomal Mode : GPIO0 핀이 1(VCC)에 연결된 후, RST를 GND에 연결 후 해제
+
+
+
+<br>
+
+
+### 4. ESP8266 프로그래밍
 
 ```cpp
 void setup() {
   // put your setup code here, to run once:
-  pinMode(pin, OUTPUT);
+  pinMode(1, OUTPUT); //TX Pin On, Off
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(pin, HIGH);
+  digitalWrite(1, HIGH);
   delay(1000);
-  digitalWrite(pin, LOW);
+  digitalWrite(1, LOW);
   delay(1000);
 }
 ```
+
+![image](https://user-images.githubusercontent.com/66783849/184496699-ac850592-8666-4a6d-af68-3e277bedeef1.png) 업로드 버튼
+
+<img src="https://user-images.githubusercontent.com/66783849/184496761-b9087533-0869-42a9-922b-3f289fea1e6b.png" width="50%"> 컴파일중
+
+<img src="https://user-images.githubusercontent.com/66783849/184496776-fe511045-2d8e-4329-b89a-80f526af308e.png" width="50%"> 업로딩중
+
+
+
+### 5. ESP8266 실행 모드 설정
+- Nomal 모드를 바꾼다.
+  Nomal Mode : GPIO0 핀이 1(VCC)에 연결된 후, RST를 GND에 연결 후 해제
+![image](https://user-images.githubusercontent.com/66783849/184498628-9a1396ce-3257-4ed8-b7e6-d595a62bbc31.png) Nomal 모드
+
+
+### 6. 결과 확인
+- 1초마다 LED가 깜빡거리는 것을 확인한다.
+- TX핀에 On/Off를 시켜 LED가 깜빡거리는 것을 확인한다.
+![image](https://user-images.githubusercontent.com/66783849/184498734-98246238-29e2-4853-87b7-68c9c87c2375.png)
+
+
 
 <br>
 
