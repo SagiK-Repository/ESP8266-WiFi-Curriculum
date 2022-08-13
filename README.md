@@ -10,7 +10,7 @@
 - [ ] : Chapter 3. ESP8266을 활용한 
 
 기타 교육
-- [ ] : AVR를 활용한 ESP8266 Wifi 접속(기본)
+- [x] : [AVR를 활용한 ESP8266 Wifi 접속(기본)](https://github.com/SagiK-Repository/ESP8266-WiFi-Curriculum/tree/main/AVR%20ESP8266)
 
 ### 제작자
 [@SAgiKPJH](https://github.com/SAgiKPJH)
