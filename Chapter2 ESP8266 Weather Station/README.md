@@ -1,19 +1,28 @@
-문서정보 : 20xx.xx.xx. 작성 (원본 20xx.xx.xx. 작성), 작성자 [@SAgiKPJH](https://github.com/SAgiKPJH)
+문서정보 : 2022.08.13. 작성, 작성자 [@SAgiKPJH](https://github.com/SAgiKPJH)
 
 # 목차
-1. 목차1
-2. 목차2
+1. ESP8266 환경 설정
+2. ESP8266 Weather Station
 
 <br>
 
-# 1. 목차1
+# **1. ESP8266 환경 설정**
 
-### ◆ 소제목
+
+### ◆ ESP8266 하드웨어 연결
+- 준비물
+  - ESP8266
+  - USB to Serial 변환 장치
+ 
+<br>
+
+
+### ◆ ESP8266 소프트웨어 환경 준비
  - 내용
  
 <br>
 
-# 2. 목차2
+# **2. ESP8266 환경 설정**
 
 ### ◆ 소제목
 - 내용
