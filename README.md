@@ -13,10 +13,10 @@
 - [ ] : AVR를 활용한 ESP8266 Wifi 접속(기본)
 
 ### 제작자
-@SAgiKPJH
+[@SAgiKPJH](https://github.com/SAgiKPJH)
 
 ### 교육자
-@gyfolder @ttkpark
+[@gyfolder](https://github.com/gyfolder) [@ttkpark](https://github.com/ttkpark)
 
 ### 참조
 
