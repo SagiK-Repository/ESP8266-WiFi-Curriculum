@@ -9,6 +9,9 @@
 - [ ] : Chapter 2. ESP8266을 활용한 기상청 날씨 정보 획득
 - [ ] : Chapter 3. ESP8266을 활용한 
 
+기타 교육
+- [ ] : AVR를 활용한 ESP8266 Wifi 접속(기본)
+
 ### 제작자
 @SAgiKPJH
 
