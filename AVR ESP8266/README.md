@@ -83,13 +83,11 @@ Command | Funtion | Response
 -- | -- | --
 정상작동 확인 | AT | OK
 재시작 | AT+RST | OK
-접속 가능한AP 리스트 출력 | AT+CWLAP | 리스트
-OK
-AP접속 | AT+CWJAP=\<ssid\>,\<password\> | 연결확인
-OK
+접속 가능한AP 리스트 출력 | AT+CWLAP | 리스트 OK
+AP접속 | AT+CWJAP=\<ssid\>,\<password\> | 연결확인 OK
 TCP/UDP 통신시작 | AT+CIPSTART=\<type\>,\<remote IP\>, \<remote port\> | id = 0-4, type = TCP/UDP, addr = IP address, port= port
 데이터 전송 | AT+CIPSEND=\<length\> | OK
-현재 연결 종료 | AT+CIPCLOSE | CLOSED     OK
+현재 연결 종료 | AT+CIPCLOSE | CLOSED OK
 
 <br>
 
@@ -120,7 +118,7 @@ TCP/UDP 통신시작 | AT+CIPSTART=\<type\>,\<remote IP\>, \<remote port\> | id 
 ### ◆ ESP8266 Serial 통신으로 수원시 고등로 날씨정보 받기 (2022년 기준)
 - 기상청 사이트에 접속 후 RSS위치로 이동한다.
 - 위치를 입력 후 사이트 정보를 획득한다.  
-  예)수원시 팔달구 고등동 [날씨정보 사이트](http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=4111567000)
+  예)수원시 팔달구 고등동 [날씨정보 사이트](http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=4111567000)  
 ![image](https://user-images.githubusercontent.com/66783849/184472857-fe819b3a-e31d-4b8d-a0ef-99a96d24cc34.png) 기상청 사이트 RSS
 ![image](https://user-images.githubusercontent.com/66783849/184472858-c68f09dc-ff2e-4f20-acd6-fa7a0f59c6d5.png) 위치에 대한 정보 받는 사이트 획득 화면
 
@@ -167,7 +165,7 @@ TCP/UDP 통신시작 | AT+CIPSTART=\<type\>,\<remote IP\>, \<remote port\> | id 
 <br>
 
 
-## 4.AVR 활용한 Wi-Fi
+## 4. AVR 활용한 Wi-Fi
 
 ### ◆ 준비물
 - AVR Atmega128A
@@ -193,9 +191,9 @@ TCP/UDP 통신시작 | AT+CIPSTART=\<type\>,\<remote IP\>, \<remote port\> | id 
 <br>
 
 ### ◆ MicroChip Studio 프로젝트 설정
-1) 새 프로젝트 생성 (폴더에 한글이 없도록 한다)
+1) 새 프로젝트 생성 (폴더에 한글이 없도록 한다)  
   ![image](https://user-images.githubusercontent.com/66783849/184473532-929037d0-882f-4b63-960b-49275ba62df1.png) 새 프로젝트
-2) Device 선택 (Atmega128A)
+2) Device 선택 (Atmega128A)  
   ![image](https://user-images.githubusercontent.com/66783849/184473544-c4d8a3c7-dfea-4394-8068-697480427339.png) Device Selection
 
 <br>
