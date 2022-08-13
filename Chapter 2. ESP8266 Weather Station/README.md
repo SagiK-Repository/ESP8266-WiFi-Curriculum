@@ -1,10 +1,19 @@
 문서정보 : 2022.08.13. 작성, 작성자 [@SAgiKPJH](https://github.com/SAgiKPJH)
 
 # 목차
+0. 구현 과정
 1. ESP8266 환경 설정
 2. ESP8266 Weather Station
 
 <br>
+
+# **0. 구현 과정**
+
+```mermaid
+flowchart LR
+    EL["ESP8266 Library"] --> AI["Arduino IDE"] --> E["ESP8266"]
+```
+
 
 # **1. ESP8266 환경 설정**
 
