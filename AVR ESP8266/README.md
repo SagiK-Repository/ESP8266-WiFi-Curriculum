@@ -318,6 +318,8 @@ int main(void) {
 }
 ```
 
+<br><br>
+
 #### AVR Atmega128 ESP8266 WiFi 통신 코드 (main.c)
 ```cpp
 #include <xc.h>
