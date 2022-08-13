@@ -415,16 +415,26 @@ int main(void) {
 ![image](https://user-images.githubusercontent.com/66783849/184474218-152fe937-80c9-41a2-a943-af85b87e560c.png) AVR Test 결과
 
 ## 참고문헌
-- 와이파이 https://ko.wikipedia.org/wiki/와이파이_얼라이언스
-https://namu.wiki/w/Wi-Fi
-- ESP8266 ESP-01 https://www.devicemart.co.kr/goods/view?no=1279338
-https://www.ktron.in/product/esp8266-esp-01-wifi-module/
-- ESP8266EX https://www.mouser.kr/ProductDetail/Espressif-Systems/ESP8266EX?qs=chTDxNqvsynorwcu2ADV3g%3D%3D&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45b_pJNNAVglO2yBeQZ3HHjaZBDXBcdgLuJSRou_Jvh5DeUnTN71d9waAsgQEALw_wcB
-- PN25F08 https://datasheetspdf.com/datasheet/PN25F08.html
-- ESP8266 Pin-Out http://john-home.iptime.org:8085/xe/index.php?mid=board_HzuF34&document_srl=416
-- 시리얼 통신 기초 – UART https://www.hardcopyworld.com/?p=2080 https://ko.wikipedia.org/wiki/UART
-- Microchip Studio https://docs.whiteat.com/wat128_07_02-atmega128a%ec%97%90%ec%84%9c-%ec%97%90%ec%bd%94-%ec%a0%84%ec%86%a1-2-2/
-- 아두이노 https://ko.wikipedia.org/wiki/아두이노
-- AT명령어 https://blog.daum.net/swimming_7291/35
+- 와이파이
+  - https://ko.wikipedia.org/wiki/와이파이_얼라이언스
+  - https://namu.wiki/w/Wi-Fi
+- ESP8266 ESP-01
+  - https://www.devicemart.co.kr/goods/view?no=1279338
+  - https://www.ktron.in/product/esp8266-esp-01-wifi-module/
+- ESP8266EX
+  - https://www.mouser.kr/ProductDetail/Espressif-Systems/ESP8266EX?qs=chTDxNqvsynorwcu2ADV3g%3D%3D&gclid=Cj0KCQjwvqeUBhCBARIsAOdt45b_pJNNAVglO2yBeQZ3HHjaZBDXBcdgLuJSRou_Jvh5DeUnTN71d9waAsgQEALw_wcB
+- PN25F08
+  - https://datasheetspdf.com/datasheet/PN25F08.html
+- ESP8266 Pin-Out
+  - http://john-home.iptime.org:8085/xe/index.php?mid=board_HzuF34&document_srl=416
+- 시리얼 통신 기초 – UART
+  - https://www.hardcopyworld.com/?p=2080
+  - https://ko.wikipedia.org/wiki/UART
+- Microchip Studio
+  - https://docs.whiteat.com/wat128_07_02-atmega128a%ec%97%90%ec%84%9c-%ec%97%90%ec%bd%94-%ec%a0%84%ec%86%a1-2-2/
+- 아두이노
+  - https://ko.wikipedia.org/wiki/아두이노
+- AT명령어
+  - https://blog.daum.net/swimming_7291/35
 
 
