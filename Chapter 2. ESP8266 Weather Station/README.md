@@ -37,7 +37,7 @@ flowchart LR
 ### ◆ Arduino IDE
 
 <img src="https://user-images.githubusercontent.com/66783849/184478387-45e0c140-d61b-4912-9b0c-6f3818d9bfda.png" width="30%"> 시작화면
-<img src="https://user-images.githubusercontent.com/66783849/184478390-e28922f6-aae9-4ef8-a976-d6988be18bb0.png" width="30%"> Arduino IDE 화면
+<img src="https://user-images.githubusercontent.com/66783849/184478390-e28922f6-aae9-4ef8-a976-d6988be18bb0.png" width="18%"> Arduino IDE 화면
 
 - **아두이노 통합개발환경(Arduino IDE)** 은 프로세싱을 기반으로 개발된 편집기, 컴파일러, 업로더 등이 합쳐진 소프트웨어 환경이다. 
 - '아두이노 소프트웨어'라고도 불린다.
