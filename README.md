@@ -4,6 +4,15 @@
 ### 목적
 - ESP8266에 대해서 공부한다.
 
+### 과정 기록
+
+```mermaid
+flowchart LR
+A_1["ESP8266"]-->A_2["ESP8266 <br> Weather Station"]
+A_1-->B_1["AVR ESP8266"]
+
+```
+
 ### 목표
 - [x] : [Chapter 1. ESP8266이란?](https://github.com/SagiK-Repository/ESP8266-WiFi-Curriculum/tree/main/Chapter%201.%20%20About%20ESP8266)
 - [x] : [Chapter 2. ESP8266을 활용한 기상청 날씨 정보 획득](https://github.com/SagiK-Repository/ESP8266-WiFi-Curriculum/tree/main/Chapter%202.%20ESP8266%20Weather%20Station)
