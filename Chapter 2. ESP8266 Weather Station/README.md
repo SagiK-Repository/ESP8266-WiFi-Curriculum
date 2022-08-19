@@ -8,8 +8,7 @@
 4. ESP8266 기본 프로그래밍 - 내부 LED 깜빡이기
 5. HTTP
 6. Json
-7. ESP8266 HTTP
-8. ESP8266 - Get Weather Station
+7. ESP8266 - Get Weather Station
 
 <br><br><br>
 
