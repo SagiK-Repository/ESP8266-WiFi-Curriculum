@@ -75,7 +75,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
   <img src="https://user-images.githubusercontent.com/66783849/184494050-7e6b6fd2-1dc0-4c0a-a546-0e87785370b2.png" width="70%">  
   
-3. 도구 > 보드 > 보드 관리자 로 이동한다.
+3. 도구 > 보드 > 보드 관리자 로 이동한다.  
    <img src="https://user-images.githubusercontent.com/66783849/184494162-a9452530-1cc2-4ed0-bee1-5e8c18f5ea20.png" width="70%">
 
 4. ESP8266을 검색하고 **"esp8266 by ESP8266 Community"** 선택 후 **Install** 버튼을 누른다.  
@@ -447,17 +447,221 @@ DELETE | 존재하는 자원에 대한 삭제
 
 
 
-# **7. ESP8266 HTTP**
+# **7. ESP8266 - Get Weather Station**
+
+- HTTP(Hypertext Transfer Protocol)는 클라이언트와 서버간의 요청-응답 프로토콜로 작동한다.
+- 상세적으로는 다음과 같은 과정을 거친다.
+  - ESP8266(클라이언트)는 HTTP 요청을 서버(OpenWeatherMap.org)에 요청한다.
+  - 서버는 ESP8266(클라이언트)에 응답을 반환한다.
+  - 마지막으로 응답에는 요청에 대한 상태 정보가 포함되어 요청된 콘텐츠도 포함될 수 있다.
+
+### HTTP GET
+- GET은 지정된 리소스에서 데이터를 요청하는 데 사용된다. API에서 값을 가져오는 데 자주 사용된다.
+- JSON 객체로 반환이 가능하다.
+```http
+GET /weather?countryCode=PT
+```
+
+<br>
+
+### Arduino IDE 환경 세팅 
+
+- Arduino IDE를 활용하여 ESP8266 프로그래밍이 가능하도록 ESP8266를 설치를 이미 진행하였다.
+- Arduino_JSON 라이브러리를 설치한다.
+  - `Sketch` > `Include Library` > `Manage Libraries` > "Arduino_JSON" 검색 후 설치  
+    <img src="https://user-images.githubusercontent.com/66783849/185410510-2b61b2df-8bd9-483e-b507-376bea9093d8.png" width="70%">
+
+<br>
+
+### OpenWeatherMap API 사용
+
+<img src="https://user-images.githubusercontent.com/66783849/185412298-d09b271e-b412-4927-8a1f-d0fd807cc899.png" width = "30%">
+
+- API(Application Programming Interface | 애플리케이션 프로그램 인터페이스)는 컴퓨터와 컴퓨터 프로그램 사이의 연결이며, 다른 종류의 소프트웨어에 서비스를 제공한다.
+- OpenWeatherMap은 선택한 위치에 대한 현재 일기예보를 요청한다.
+- API에서 정보를 획득하는 방법은, API키와 API ID, 요구하는 정보를 요청하면 획득할 수 있다.
+- 다음 과정을 통해 API 키를 획득한다.
+   1. [OpenWeatherMap 사이트](https://openweathermap.org/appid/)로 들어가 가입한다.
+   2. [API Keys 항목](https://home.openweathermap.org/api_keys)에 들어가 Key 값을 획득한다.  
+      <img src="https://user-images.githubusercontent.com/66783849/185416731-a30042a6-a6ac-4b00-95ce-8e4983d32acb.png" width="70%">
+   3. 획득할 도시와 국가 코드는 메인 홈페이지 검색창에서 획득한다. (예-Suwon, KR)  
+      <img src="https://user-images.githubusercontent.com/66783849/185418781-ddc2a5b0-6a13-4d5f-8b94-dcf172d7035b.png" width="70%">
+   4. 선택한 위치의 날씨 정보를 가져오려면 다음 URL와 같이 입력해야 한다. (자세한 설명은 [사이트](https://openweathermap.org/appid/)를 확인한다.)  
+      `http://api.openweathermap.org/data/2.5/weather?q=yourCityName,yourCountryCode&APPID=yourUniqueAPIkey`
+       - yourCityName : 원하는 데이터에 해당하는 도시
+       - yourCountryCode : 원하는 도시에 해당하는 국가 코드
+       - yourUniqueAPIkey : 고유한 API KEY
+   5. URL을 브라우저에 입력하면, 다음과 같은 JSON 코드를 반환하는 모습을 확인할 수 있다.  
+      <img src="https://user-images.githubusercontent.com/66783849/185485794-b667e197-c540-45d7-894b-06348f2de7a8.png" width="70%">  
+      `{"coord":{"lon":127.0089,"lat":37.2911},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}],"base":"stations","main":{"temp":294.44,"feels_like":295.08,"temp_min":292.84,"temp_max":295.79,"pressure":1005,"humidity":94},"visibility":6000,"wind":{"speed":1.03,"deg":160},"clouds":{"all":100},"dt":1660853427,"sys":{"type":1,"id":5509,"country":"KR","sunrise":1660855879,"sunset":1660904426},"timezone":32400,"id":1835553,"name":"Suwon-si","cod":200}`
 
 
+<br>
 
-<br><br><br>
+### ESP8266 HTTP GET OpenWeatherMap.org
+
+- ESP8266의 HTTP GET의 기본틀 코드를 작성한다.
+  ```cs
+  /*
+  Rui Santos
+  Complete project details at Complete project details at https://RandomNerdTutorials.com/esp8266-nodemcu-http-get-open-weather-map-thingspeak-arduino/
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files.
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+  Code compatible with ESP8266 Boards Version 3.0.0 or above 
+  (see in Tools > Boards > Boards Manager > ESP8266)
+  */
+  
+  #include <ESP8266WiFi.h>
+  #include <ESP8266HTTPClient.h>
+  #include <WiFiClient.h>
+  #include <Arduino_JSON.h>
+  
+  const char* ssid = "REPLACE_WITH_YOUR_SSID";
+  const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+  
+  // Your Domain name with URL path or IP address with path
+  String openWeatherMapApiKey = "REPLACE_WITH_YOUR_OPEN_WEATHER_MAP_API_KEY";
+  // Example:
+  //String openWeatherMapApiKey = "bd939aa3d23ff33d3c8f5dd1dd4";
+  
+  // Replace with your country code and city
+  String city = "Porto";
+  String countryCode = "PT";
+  
+  // THE DEFAULT TIMER IS SET TO 10 SECONDS FOR TESTING PURPOSES
+  // For a final application, check the API call limits per hour/minute to avoid getting blocked/banned
+  unsigned long lastTime = 0;
+  // Timer set to 10 minutes (600000)
+  //unsigned long timerDelay = 600000;
+  // Set timer to 10 seconds (10000)
+  unsigned long timerDelay = 10000;
+  
+  String jsonBuffer;
+  
+  void setup() {
+    Serial.begin(115200);
+  
+    WiFi.begin(ssid, password);
+    Serial.println("Connecting");
+    while(WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+    }
+    Serial.println("");
+    Serial.print("Connected to WiFi network with IP Address: ");
+    Serial.println(WiFi.localIP());
+   
+    Serial.println("Timer set to 10 seconds (timerDelay variable), it will take 10 seconds before publishing the first reading.");
+  }
+  
+  void loop() {
+    // Send an HTTP GET request
+    if ((millis() - lastTime) > timerDelay) {
+      // Check WiFi connection status
+      if(WiFi.status()== WL_CONNECTED){
+        String serverPath = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + countryCode + "&APPID=" + openWeatherMapApiKey;
+        
+        jsonBuffer = httpGETRequest(serverPath.c_str());
+        Serial.println(jsonBuffer);
+        JSONVar myObject = JSON.parse(jsonBuffer);
+    
+        // JSON.typeof(jsonVar) can be used to get the type of the var
+        if (JSON.typeof(myObject) == "undefined") {
+          Serial.println("Parsing input failed!");
+          return;
+        }
+      
+        Serial.print("JSON object = ");
+        Serial.println(myObject);
+        Serial.print("Temperature: ");
+        Serial.println(myObject["main"]["temp"]);
+        Serial.print("Pressure: ");
+        Serial.println(myObject["main"]["pressure"]);
+        Serial.print("Humidity: ");
+        Serial.println(myObject["main"]["humidity"]);
+        Serial.print("Wind Speed: ");
+        Serial.println(myObject["wind"]["speed"]);
+      }
+      else {
+        Serial.println("WiFi Disconnected");
+      }
+      lastTime = millis();
+    }
+  }
+  
+  String httpGETRequest(const char* serverName) {
+    WiFiClient client;
+    HTTPClient http;
+      
+    // Your IP address with path or Domain name with URL path 
+    http.begin(client, serverName);
+    
+    // Send HTTP POST request
+    int httpResponseCode = http.GET();
+    
+    String payload = "{}"; 
+    
+    if (httpResponseCode>0) {
+      Serial.print("HTTP Response code: ");
+      Serial.println(httpResponseCode);
+      payload = http.getString();
+    }
+    else {
+      Serial.print("Error code: ");
+      Serial.println(httpResponseCode);
+    }
+    // Free resources
+    http.end();
+  
+    return payload;
+  }
+  ```
+- 네트워크 정보를 수정한다.  
+  ```cs
+  // Replace with your network credentials
+  const char* ssid     = "REPLACE_WITH_YOUR_SSID";
+  const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+  ```
+- API키를 입력한다.
+  ```cs
+  String openWeatherMapApiKey = "REPLACE_WITH_YOUR_OPEN_WEATHER_MAP_API_KEY";
+  ```
+- 도시와 국가를 설정한다.
+  ```cs
+  // Replace with your country code and city
+  String city = "Porto";
+  String countryCode = "PT";
+  ```
+- `String httpGETRequest(const char* serverName){}`은 HTTP GET 요청을 만들고, 도시의 날씨에 대한 모든 정보를 포함하는 JSON을 받아온다.
+- JSON 객체 디코딩 : 얻은 JSON 값을 기코딩하여 획득한 정보를 정렬한다.
+  ```cs
+  JSONVar myObject = JSON.parse(jsonBuffer);
+  // JSON.typeof(jsonVar) can be used to get the type of the var
+  
+  if (JSON.typeof(myObject) == "undefined") {
+    Serial.println("Parsing input failed!");
+    return;
+  }
+  
+  Serial.print("JSON object = ");
+  Serial.println(myObject);
+  Serial.print("Temperature: ");
+  Serial.println(myObject["main"]["temp"]);
+  Serial.print("Pressure: ");
+  Serial.println(myObject["main"]["pressure"]);
+  Serial.print("Humidity: ");
+  Serial.println(myObject["main"]["humidity"]);
+  Serial.print("Wind Speed: ");
+  Serial.println(myObject["wind"]["speed"]);
+  ```
+- ESP8266에 프로그래밍을 진행하고 실행시켜 결과를 확인한다.
 
 
+<br><br>
 
-# **8. ESP8266 - Get Weather Station**
-
-
+### 실행결과
 
 
 <br><br><br>
@@ -485,3 +689,9 @@ DELETE | 존재하는 자원에 대한 삭제
 - json 정보
   - https://ko.wikipedia.org/wiki/JSON
   - https://www.oracle.com/kr/database/what-is-json/
+- OpenWeatherAPI
+  - How to make API call using your API key : https://openweathermap.org/appid/
+  - Main Page : https://openweathermap.org/api
+  - Search City : https://openweathermap.org/city/1835553
+  - Get Key : https://home.openweathermap.org/api_keys
+
