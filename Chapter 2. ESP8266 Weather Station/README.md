@@ -75,7 +75,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
   <img src="https://user-images.githubusercontent.com/66783849/184494050-7e6b6fd2-1dc0-4c0a-a546-0e87785370b2.png" width="70%">  
   
-3. 도구 > 보드 > 보드 관리자 로 이동한다.  
+3. `도구` > `보드` > `보드 관리자` 로 이동한다.  
    <img src="https://user-images.githubusercontent.com/66783849/184494162-a9452530-1cc2-4ed0-bee1-5e8c18f5ea20.png" width="70%">
 
 4. ESP8266을 검색하고 **"esp8266 by ESP8266 Community"** 선택 후 **Install** 버튼을 누른다.  
@@ -152,7 +152,7 @@ GND | GND
 - ESP8266에는 프로그래밍 모드와 실행모드 등 여러 모드가 존재한다.  
 - 프로그래밍 모드로 설정을 해야 프로그래밍이 가능하다.  
 - 현재 ESP8266이 어떤 모드에 있는지 확인하기 위해서는 다음과 같은 과정을 거친다.  
-    1. [툴 > 시리얼 모니터] 시리얼 통신을 통한 결과확인을 위해 가상 시리얼 모니터를 연다.
+    1. [`툴` > `시리얼 모니터`] 시리얼 통신을 통한 결과확인을 위해 가상 시리얼 모니터를 연다.
     2. Board Rate는 74880bps로 설정한다.
     3. ESP8266의 RST핀에 GND를 연결한다.
     4. 시리얼 모니터에 결과를 확인한다.  
