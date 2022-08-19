@@ -618,6 +618,7 @@ GET /weather?countryCode=PT
     return payload;
   }
   ```
+- Serial Bps를 74880으로 설정해 준다 (ESP8266 TWM-02의 경우)
 - 네트워크 정보를 수정한다.  
   ```cs
   // Replace with your network credentials
@@ -656,12 +657,19 @@ GET /weather?countryCode=PT
   Serial.print("Wind Speed: ");
   Serial.println(myObject["wind"]["speed"]);
   ```
-- ESP8266에 프로그래밍을 진행하고 실행시켜 결과를 확인한다.
-
 
 <br><br>
 
 ### 실행결과
+
+- ESP8266에 프로그래밍을 진행하고 실행시켜 결과를 확인한다.
+
+<img src="https://user-images.githubusercontent.com/66783849/185616731-6dd002ea-346d-4f2a-9e5a-46f9dc6d427e.png" width="70%">
+
+- ESP8266 프로그래밍을 개조해 결과가 가독성 좋게 나오도록 한다.
+
+<img src="https://user-images.githubusercontent.com/66783849/185617243-06e14134-dd10-4fdf-958d-620526d275cc.png" width="100%">
+
 
 
 <br><br><br>
