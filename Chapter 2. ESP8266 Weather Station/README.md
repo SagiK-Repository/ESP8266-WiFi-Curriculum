@@ -1,4 +1,4 @@
-문서정보 : 2022.08.13. 작성, 작성자 [@SAgiKPJH](https://github.com/SAgiKPJH)
+문서정보 : 2022.08.13.~19. 작성, 작성자 [@SAgiKPJH](https://github.com/SAgiKPJH)
 
 # 목차
 0. 구현 과정
