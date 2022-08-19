@@ -618,6 +618,9 @@ GET /weather?countryCode=PT
   }
   ```
 - Serial Bps를 74880으로 설정해 준다 (ESP8266 TWM-02의 경우)
+  ```cs
+  Serial.begin(74880);
+  ```
 - 네트워크 정보를 수정한다.  
   ```cs
   // Replace with your network credentials
@@ -631,8 +634,8 @@ GET /weather?countryCode=PT
 - 도시와 국가를 설정한다.
   ```cs
   // Replace with your country code and city
-  String city = "Porto";
-  String countryCode = "PT";
+  String city = "Suwon";
+  String countryCode = "KR";
   ```
 - `String httpGETRequest(const char* serverName){}`은 HTTP GET 요청을 만들고, 도시의 날씨에 대한 모든 정보를 포함하는 JSON을 받아온다.
 - JSON 객체 디코딩 : 얻은 JSON 값을 기코딩하여 획득한 정보를 정렬한다.
