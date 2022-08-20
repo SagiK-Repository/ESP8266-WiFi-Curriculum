@@ -8,7 +8,7 @@
 
 ```mermaid
 flowchart LR
-A_1["ESP8266"]-->A_2["ESP8266 <br> Weather Station"]
+A_1["ESP8266"]-->A_2["ESP8266 <br> Weather Station"]-->A_3["ESP8266<br>Next Project"]
 A_1-->B_1["AVR ESP8266"]
 
 ```
