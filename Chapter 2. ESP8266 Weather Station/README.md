@@ -461,6 +461,12 @@ DELETE | 존재하는 자원에 대한 삭제
 GET /weather?countryCode=PT
 ```
 
+### ◆ GET 상세 설명
+- GET은 AT명령어로써, Serial 통신을 위한 명령어중 하나이다.  
+GET /내용 HTTP/1.1 서버인식엔터 페이지수신엔터  
+예) www.google.com/search?q=hell... 접속  
+GET /search?q=hell... HTTP/1.1 (엔터)(엔터)
+
 <br>
 
 ### Arduino IDE 환경 세팅 
